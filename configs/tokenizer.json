@@ -1,0 +1,5 @@
+{
+    "unit_alphabet": "./data/radical.txt",
+    "radical_decompose": "./data/decompose_27533_benchmark.txt",
+    "geometric_mask": "./data/char_geometric_mask.pt"
+}

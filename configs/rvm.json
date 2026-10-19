@@ -1,0 +1,13 @@
+{
+    "max_txt_len": 30,
+    "num_decoder_layers": 6,
+    "finetune_neg_ratio": 2,
+    "pretrain_neg_ratio": 3,
+    "rtm_weight": 1.0,
+    "focal_weight": 5.0,
+    "dice_weight": 1.0,
+    "focal_alpha": 0.85,
+    "focal_gamma": 2.0,
+    "mask_threshold": 0.3,
+    "foreground_threshold": 0.4
+}
