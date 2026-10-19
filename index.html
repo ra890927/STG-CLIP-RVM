@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="From Global Alignment to Local Grounding: Zero-Shot Chinese Character Recognition with Radical Verification (ACCV 2026). STG-CLIP global retrieval + Radical Verification Module.">
+  <meta name="keywords" content="Zero-Shot Learning, Chinese Character Recognition, Radical Verification, STG-CLIP, RVM, IDS">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>From Global Alignment to Local Grounding: Zero-Shot Chinese Character Recognition with Radical Verification</title>
+
+  <meta property="og:title" content="From Global Alignment to Local Grounding: Zero-Shot Chinese Character Recognition with Radical Verification">
+  <meta property="og:description" content="STG-CLIP global retrieval + Radical Verification Module for zero-shot Chinese character recognition. ACCV 2026.">
+  <meta property="og:image" content="static/images/main.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro|Noto+Serif+TC:400,700&display=swap"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.6/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <style>
+    .publication-venue-tag { font-family: 'Google Sans', sans-serif; font-size: 1.15rem; color: #555; margin-top: .4rem; }
+    .figure-card { border: 1px solid #ddd; border-radius: 10px; padding: 10px; background: #fff; }
+    .figure-card img { width: 100%; height: auto; display: block; }
+    .figure-caption { font-size: .95rem; color: #4a4a4a; margin-top: .75rem; text-align: left; }
+    .han { font-family: 'Noto Serif TC', 'PMingLiU', serif; }
+    .button.is-disabled-link { opacity: .55; cursor: default; pointer-events: none; }
+    .button .soon { font-size: .7em; margin-left: .35em; opacity: .85; }
+    .contrib .box { height: 100%; }
+    .contrib .box h3 { font-family: 'Google Sans', sans-serif; margin-bottom: .5rem; }
+    .eq { overflow-x: auto; padding: .25rem 0; }
+    .results-table td, .results-table th { white-space: nowrap; text-align: right; }
+    .results-table td:first-child, .results-table th:first-child { text-align: left; }
+    .results-table tr.ours { background: #fff6f4; }
+    .results-table tr.ours td:first-child { font-weight: 700; }
+    .results-table td.best { font-weight: 700; }
+    .table-container { border: 1px solid #ddd; border-radius: 10px; }
+    .stat-num { font-family: 'Google Sans', sans-serif; font-size: 2.2rem; line-height: 1.1; }
+    .stat-lbl { font-size: .9rem; color: #555; }
+    .tab-panel[hidden] { display: none; }
+    .tabs.is-toggle li.is-active a { background-color: #363636; border-color: #363636; }
+    #BibTeX pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+  </style>
+</head>
+<body>
+
+<!-- ===================== Header ===================== -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">From Global Alignment to Local Grounding: Zero-Shot Chinese Character Recognition with Radical Verification</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Yu-Heng Shih<sup>1</sup>,</span>
+            <span class="author-block">Bing-Chen Wu<sup>1</sup>,</span>
+            <span class="author-block">Tsz-To Wong<sup>1</sup>,</span>
+            <span class="author-block">Ting-En Yen<sup>1</sup>,</span>
+            <span class="author-block">Hong-Han Shuai<sup>1</sup>,</span>
+            <span class="author-block">Bin-Hua Hsieh<sup>2</sup>,</span>
+            <span class="author-block">Chien-An Chen<sup>2</sup>,</span>
+            <span class="author-block">Yi-Ren Yeh<sup>3</sup>,</span>
+            <span class="author-block">Ching-Chun Huang<sup>1,*</sup></span>
+          </div>
+
+          <div class="is-size-6 publication-authors" style="margin-top:.5rem">
+            <span class="author-block"><sup>1</sup>National Yang Ming Chiao Tung University,</span>
+            <span class="author-block"><sup>2</sup>E.SUN Financial Holding Co., Ltd.,</span>
+            <span class="author-block"><sup>3</sup>National Kaohsiung Normal University</span>
+          </div>
+          <div class="is-size-7 publication-authors" style="color:#777;margin-top:.25rem">
+            <span class="author-block">* Corresponding author</span>
+          </div>
+          <div class="publication-venue-tag"><b>ACCV 2026</b></div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Paper -->
+              <span class="link-block">
+                <a href="https://openreview.net/forum?id=LH7kTObY2d" target="_blank" rel="noopener"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- arXiv -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2610.09449" target="_blank" rel="noopener"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Supplementary -->
+              <span class="link-block">
+                <a href="https://openreview.net/attachment?id=LH7kTObY2d&amp;name=supplementary_material" target="_blank" rel="noopener"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-lines"></i></span>
+                  <span>Supplementary</span>
+                </a>
+              </span>
+              <!-- Code: TODO replace href and remove "is-disabled-link" + the "soon" label when released -->
+              <span class="link-block">
+                <a href="#" aria-disabled="true"
+                   class="external-link button is-normal is-rounded is-dark is-disabled-link">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code<span class="soon">(coming soon)</span></span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Teaser ===================== -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="figure-card">
+        <img src="./static/images/main.png" width="1266" height="635"
+             alt="Framework overview: STG-CLIP (left), RVM (top right), two-stage inference (bottom right).">
+      </div>
+      <h2 class="subtitle has-text-centered" style="margin-top:1.25rem">
+        <b>STG-CLIP</b> retrieves candidates with spatial-aware IDS prototypes;
+        the <b>Radical Verification Module</b> checks each candidate's radicals against the handwriting
+        to settle look-alike characters such as <span class="han">阿 · 啊 · 呵</span>.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Key numbers ===================== -->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns has-text-centered">
+        <div class="column">
+          <div class="stat-num">83.06%</div>
+          <div class="stat-lbl">Top-1 on ICDAR2013, character zero-shot<br>with 2,755 seen classes (state of the art)</div>
+        </div>
+        <div class="column">
+          <div class="stat-num">+4.10</div>
+          <div class="stat-lbl">points over the previous best<br>(FT-CLIP, 78.96%)</div>
+        </div>
+        <div class="column">
+          <div class="stat-num">94.02%</div>
+          <div class="stat-lbl">Top-4 recall of Stage-1 STG-CLIP<br>vs. 82.26% Top-1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Abstract ===================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Zero-shot Chinese character recognition (ZS-CCR) aims to recognize characters whose categories are never observed during training, and typically relies on the compositional structure shared between seen and unseen characters. Recent CLIP-style methods represent this structure with the Ideographic Description Sequence (IDS) and align it with glyph images in a shared embedding space. However, they rely on a single global image&ndash;IDS similarity that discards the spatial layout of radicals and, being learned only implicitly from seen classes, generalizes poorly to unseen ones; moreover, global matching often retrieves the correct character within the top candidates yet fails to rank it first when characters differ only in subtle local radicals.
+          </p>
+          <p>
+            To address these issues, we propose a global-to-local two-stage framework. In the first stage, STG-CLIP augments the IDS with explicit tree-position and radical-level geometric priors, yielding a spatial-aware prototype that provides a consistent spatial description across seen and unseen categories for high-recall global retrieval. In the second stage, the Radical Verification Module (RVM) uses the radical instances of each retrieved candidate as queries to verify whether the corresponding radicals can be matched to spatially compatible regions in the input glyph. A margin-based gating rule activates the RVM only when the leading global candidates receive similar similarity scores. Experiments on the ICDAR2013 benchmark demonstrate that our method achieves state-of-the-art performance under the character-level zero-shot setting, obtaining 83.06% top-1 accuracy with 2,755 seen classes. Ablation studies further show that the explicit geometric priors and radical-level verification provide complementary improvements.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Method ===================== -->
+<section class="section" style="padding-top:0">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Method</h2>
+
+        <div class="columns contrib">
+          <div class="column">
+            <div class="box">
+              <h3 class="title is-5">Spatial-aware IDS</h3>
+              <p>Each IDS token gets depth and sibling embeddings plus the radical's canonical geometry (centroid, bounding box, area ratio). These priors come from canonical glyphs, so they are identical for seen and unseen classes.</p>
+            </div>
+          </div>
+          <div class="column">
+            <div class="box">
+              <h3 class="title is-5">STG-CLIP retrieval</h3>
+              <p>A ViT image encoder is contrastively aligned with the spatial-aware IDS prototypes, with a style term pulling handwritten and printed glyphs together. At test time it returns a high-recall Top-<i>K</i> shortlist.</p>
+            </div>
+          </div>
+          <div class="column">
+            <div class="box">
+              <h3 class="title is-5">Radical verification</h3>
+              <p>Each candidate's radicals act as decoder queries over local CNN features, predicting radical presence and a spatial mask. A margin gate calls the RVM only when the top-2 global scores are close.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="content has-text-justified">
+          <h3 class="title is-4">Local verification score</h3>
+          <p>For a candidate <i>y<sub>k</sub></i>, the RVM combines <b>radical presence</b> (mean existence probability, penalising extraneous radicals) with <b>glyph coverage</b> (how much of the observed foreground the union of predicted radical masks explains):</p>
+          <div class="eq" data-tex="s_{\text{local}}(y_k) = \underbrace{\tfrac{1}{|\mathcal{R}(y_k)|}\textstyle\sum_j \hat{s}_j}_{\text{presence}} \cdot \underbrace{\frac{\lVert M_{\text{union}}(y_k)\cap M_{\text{fg}}\rVert_1}{\lVert M_{\text{fg}}\rVert_1+\epsilon}}_{\text{coverage}}"></div>
+          <p>The mask head is trained with pixel-level radical masks on printed glyphs and then frozen; on handwriting the RVM is fine-tuned with the presence loss only, so no handwritten mask labels are needed.</p>
+
+          <h3 class="title is-4">Margin-based gating</h3>
+          <p>With <i>&Delta;</i> the gap between the top-1 and top-2 global scores, a clear global winner is kept and a near-tie is handed to the RVM:</p>
+          <div class="eq" data-tex="\hat{y} = \begin{cases} \arg\max_{y_k \in \mathcal{C}_K} s_{\text{local}}(y_k), & \Delta \le \delta \\ y_{(1)}, & \text{otherwise} \end{cases}"></div>
+          <p><i>K</i> = 2 and <i>&delta;</i> = 0.03 are chosen on a held-out validation set.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Results ===================== -->
+<section class="section" style="padding-top:0">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Results</h2>
+    <div class="content has-text-justified">
+      <p>Trained on CASIA-HWDB1.0&ndash;1.1 and tested on ICDAR2013. <b>Character zero-shot</b>: train on the first <i>m</i> of the 3,755 GB2312 level-1 characters, test on the last 1,000. <b>Radical zero-shot</b>: a character is held out if it contains a radical whose frequency is below <i>n</i>.</p>
+    </div>
+
+    <div class="tabs is-toggle is-small is-centered" id="resTabs">
+      <ul>
+        <li class="is-active" data-set="char"><a>Character zero-shot</a></li>
+        <li data-set="rad"><a>Radical zero-shot</a></li>
+      </ul>
+    </div>
+    <div class="table-container">
+      <table class="table is-fullwidth is-hoverable results-table" id="resTable"></table>
+    </div>
+    <p class="is-size-7 has-text-grey" id="tableNote"></p>
+
+    <div class="columns" style="margin-top:2rem">
+      <div class="column">
+        <h3 class="title is-5">Cumulative ablation</h3>
+        <p class="is-size-7 has-text-grey" style="margin-bottom:.5rem">Character zero-shot, 2,755 seen classes.</p>
+        <div class="table-container">
+          <table class="table is-fullwidth results-table">
+            <thead><tr><th>Setting</th><th>Top-1</th><th>&Delta;</th></tr></thead>
+            <tbody>
+              <tr><td>Baseline</td><td>76.27</td><td>&ndash;</td></tr>
+              <tr><td>+ IDS prototype encoding</td><td>77.78</td><td>+1.51</td></tr>
+              <tr><td>+ Radical geometry augmentation</td><td>82.26</td><td>+4.48</td></tr>
+              <tr class="ours"><td>+ RVM</td><td class="best">83.06</td><td>+0.80</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="column">
+        <h3 class="title is-5">Top-<i>k</i> accuracy of Stage-1 STG-CLIP</h3>
+        <p class="is-size-7 has-text-grey" style="margin-bottom:.5rem">The correct class is usually in the shortlist even when it is not ranked first.</p>
+        <div class="table-container">
+          <table class="table is-fullwidth results-table">
+            <thead><tr><th># Seen</th><th>Top-1</th><th>Top-2</th><th>Top-3</th><th>Top-4</th></tr></thead>
+            <tbody>
+              <tr><td>1500</td><td>59.91</td><td>71.68</td><td>77.10</td><td>80.27</td></tr>
+              <tr><td>2000</td><td>69.96</td><td>81.39</td><td>85.69</td><td>88.13</td></tr>
+              <tr><td>2755</td><td>82.26</td><td>90.17</td><td>92.71</td><td class="best">94.02</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Visualization ===================== -->
+<section class="section" style="padding-top:0">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Radical Mask Visualization</h2>
+    <div class="content has-text-justified">
+      <p>Printed ground-truth radical masks (top) and RVM predictions on the corresponding <i>handwritten</i> instance (bottom); each column overlays one radical on the glyph. Although the mask head never sees handwritten masks, its predictions stay on the correct radical for both seen and unseen characters.</p>
+    </div>
+    <div class="tabs is-toggle is-small is-centered" id="visTabs">
+      <ul>
+        <li class="is-active" data-panel="panel-seen"><a>Seen characters</a></li>
+        <li data-panel="panel-unseen"><a>Unseen characters</a></li>
+      </ul>
+    </div>
+    <div class="tab-panel" id="panel-seen">
+      <div class="figure-card"><img src="./static/images/seen.jpg" width="2400" height="1331" loading="lazy" alt="Radical mask predictions on seen characters."></div>
+    </div>
+    <div class="tab-panel" id="panel-unseen" hidden>
+      <div class="figure-card"><img src="./static/images/unseen.jpg" width="2400" height="1331" loading="lazy" alt="Radical mask predictions on unseen characters."></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BibTeX ===================== -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{
+shih2026from,
+title={From Global Alignment to Local Grounding: Zero-Shot Chinese Character Recognition with Radical Verification},
+author={Yu-Heng Shih and Bing-Chen Wu and Tsz-To Wong and Ting-En Yen and Hong-Han Shuai and Bin-Hua Hsieh and ChienAn Chen and Yi-Ren Yeh and Ching-Chun Huang},
+booktitle={Eighteenth Asian Conference on Computer Vision},
+year={2026},
+url={https://openreview.net/forum?id=LH7kTObY2d}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://openreview.net/forum?id=LH7kTObY2d" target="_blank" rel="noopener">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website source code based on the <a href="https://nerfies.github.io/">Nerfies</a> project page.
+            If you want to reuse their <a href="https://github.com/nerfies/nerfies.github.io">source code</a>, please credit them appropriately.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script>
+  // Equations
+  document.querySelectorAll('[data-tex]').forEach(function (el) {
+    try { katex.render(el.dataset.tex, el, { displayMode: true, throwOnError: false }); }
+    catch (e) { el.textContent = el.dataset.tex; }
+  });
+
+  // Results table (from table/zeroshot.tex)
+  var METHODS = ['DenseRAN','HDE','SD','STAR','FaRE','JRED','CCR-CLIP','LERRNet','FT-CLIP','STG-CLIP (ours)','STG-CLIP + RVM (ours)'];
+  var DATA = {
+    char: { cols: ['500','1000','1500','2000','2755'], label: '# seen classes', rows: [
+      [1.70,8.44,14.71,19.51,30.68],[4.90,12.77,19.25,25.13,33.49],[5.60,13.85,22.88,25.73,37.91],
+      [7.54,19.47,27.79,35.53,43.86],[7.21,21.78,36.58,47.33,57.17],[25.19,36.21,41.93,42.05,56.26],
+      [21.79,42.99,55.86,62.99,72.98],[32.73,55.36,66.01,70.81,73.59],[26.17,50.68,62.25,70.39,78.96],
+      [21.25,39.38,59.91,69.96,82.26],[22.12,40.52,63.93,71.48,83.06]] },
+    rad: { cols: ['50','40','30','20','10'], label: 'radical frequency threshold n', rows: [
+      [0.21,0.29,0.25,0.42,0.69],[3.26,4.29,6.33,7.64,9.33],[5.28,6.87,9.02,14.67,15.83],
+      [6.95,12.28,14.74,18.37,23.23],[null,null,null,null,null],[10.21,8.30,12.67,19.13,27.08],
+      [11.15,13.85,16.01,16.76,15.96],[8.35,11.22,14.81,15.98,19.37],[12.34,16.66,21.51,24.65,27.80],
+      [8.89,14.26,21.62,27.63,37.30],[8.74,14.22,21.44,27.52,37.76]] }
+  };
+  var NOTES = {
+    char: 'Top-1 accuracy (%), best in bold. Ours is best with 2,000+ seen classes; with less data the ViT encoder trails convolutional methods such as LERRNet. The RVM improves STG-CLIP at every seen-class count (+4.02 at 1,500).',
+    rad: 'Top-1 accuracy (%), best in bold. Test characters contain radicals never seen in training, so the RVM cannot verify them reliably and adds little; gains here come from STG-CLIP.'
+  };
+  function renderTable(set) {
+    var d = DATA[set];
+    var best = d.cols.map(function (_, j) { return Math.max.apply(null, d.rows.map(function (r) { return r[j] == null ? -1 : r[j]; })); });
+    var h = '<thead><tr><th>Method <span class="has-text-weight-normal has-text-grey">(' + d.label + ')</span></th>' +
+            d.cols.map(function (c) { return '<th>' + c + '</th>'; }).join('') + '</tr></thead><tbody>';
+    d.rows.forEach(function (r, i) {
+      h += '<tr class="' + (i >= 9 ? 'ours' : '') + '"><td>' + METHODS[i] + '</td>' + r.map(function (v, j) {
+        return v == null ? '<td class="has-text-grey">&ndash;</td>' : '<td class="' + (v === best[j] ? 'best' : '') + '">' + v.toFixed(2) + '</td>';
+      }).join('') + '</tr>';
+    });
+    document.getElementById('resTable').innerHTML = h + '</tbody>';
+    document.getElementById('tableNote').textContent = NOTES[set];
+  }
+  renderTable('char');
+
+  // Tabs
+  function bindTabs(id, onSelect) {
+    var items = document.querySelectorAll('#' + id + ' li');
+    items.forEach(function (li) {
+      li.addEventListener('click', function () {
+        items.forEach(function (x) { x.classList.toggle('is-active', x === li); });
+        onSelect(li);
+      });
+    });
+  }
+  bindTabs('resTabs', function (li) { renderTable(li.dataset.set); });
+  bindTabs('visTabs', function (li) {
+    document.querySelectorAll('#visTabs li').forEach(function (x) {
+      document.getElementById(x.dataset.panel).hidden = (x !== li);
+    });
+  });
+
+  // Disabled placeholder links
+  document.querySelectorAll('a[href="#"]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); }); });
+</script>
+</body>
+</html>
